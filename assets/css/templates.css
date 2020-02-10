@@ -1,0 +1,244 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 26/12/2017, 21:14:24
+    Author     : adminti
+*/
+body{
+    margin: 0;
+    padding: 0;
+    font-size: 13px;
+    font-family: Arial;
+}
+.leftmenu{
+    width: 200px;
+    background-color:#1f232a;
+    position: fixed;
+    left: 0;
+    top: 0;
+    bottom: 0;   
+}
+.company_name{
+    height: 100px;
+    line-height: 100px;
+    font-size: 18px;
+    color: #fff;
+    text-align: center;
+}
+.container{
+    padding-left: 200px;   
+}
+
+.top{
+    height: 40px;  
+    background-color:#232830;
+    color: #fff;
+    font-size: 13px;
+}
+
+.top_right{
+    float: right;
+    height: 40px;
+    line-height: 40px;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.top_right a{
+    color: #fff;
+    text-decoration: none;
+}
+
+.menu_area{
+    color: #fff;
+}
+.menu_area ul{
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.menu_area li{
+    height: 40px;
+    line-height: 40px;
+    font-size: 14px;
+    padding-left: 30px;
+}
+
+
+.menu_area li a{
+    color: #fff;
+    text-decoration: none;
+    display: block;
+}
+
+.menu_area li:hover{
+    background-color: #000;
+
+}
+.area{
+    padding: 15px;
+}
+
+.tabitem{
+    float: left;
+    width: 50%;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+    border-bottom: 1px solid #000;
+    background-color: #eee;
+    cursor: pointer;
+}
+
+.activetab{
+    border-bottom: 1px solid #fff;
+    background-color: #fff;
+}
+
+.tabbody{
+    display: none;
+    font-size: 14px;
+    padding-top: 20px;
+}
+
+input[type=text],
+input[type=email],
+input[type=password],
+select, textarea{
+    height: 30px;
+    font-size: 13px;
+    outline: 0;
+    padding-left: 5px;
+    padding-right: 5px;
+    width: 100%;
+    margin-top: 5px;
+}
+textarea{
+    height: 100px;
+    border: 1px solid #ccc;
+}
+
+input[type=submit],
+button, .button{
+    border: 0px;
+    background-color: #000;
+    color: #fff;
+    height: 40px;
+    line-height: 40px;
+    border-radius: 3px;
+    padding-left: 20px;
+    padding-right: 20px;
+    cursor: pointer;
+    font-size: 13px;
+    display: inline-block;
+}
+.button_small{
+    height: 30px;
+    line-height: 30px; 
+}
+.button a{
+    color: #fff;
+    text-decoration: none;
+}
+.tabarea{
+    height: 40px; 
+}
+
+table{
+    margin-top: 10px;
+}
+table th{
+    background-color: #ddd;
+    height: 40px;
+    line-height: 40px;
+    text-align: left;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+table td{
+    background-color: #eee;
+    height: 40px;
+    line-height: 40px;
+    text-align: left;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.p_item{
+    height: 25px;
+    line-height: 25px; 
+}
+
+.warn{
+    padding:15px;
+    background-color: #eee;
+    border: 2px solid #ccc;
+    border-radius: 3px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.pagination{
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+.pag_item{
+    width: 20px;
+    height: 20px;
+    float:left; 
+    border: 1px solid #000;
+    margin-right: 3px;
+    text-align: center;
+    line-height: 20px;
+}
+.pag_item a{
+    color: #000;
+    text-decoration: none;    
+}
+.pag_ativo{
+    background-color: #224074;
+}
+
+.pag_ativo a{
+    color: #fff;
+}
+
+#busca{
+    width: 100px;
+    float: right;
+    background-image: url('../image/lupa.png');
+    background-repeat: no-repeat;
+    background-size: 20px 20px;
+    background-position:5px;
+    padding-left: 25px;
+    border-radius: 3px;
+    border: 1px solid #ccc;
+}
+
+.searchresults{
+    width: 280px;
+    background-color: #fff;
+    position: absolute;
+    border: 1px solid #ccc;
+}
+
+.si{
+    height: 20px;
+    line-height: 20px;
+    padding-left: 10px;
+    cursor:pointer;        
+}
+.si a{
+    text-decoration: none;
+    color: #000;
+    display: block;
+}
+.si:hover{
+    background-color: #eee;
+}

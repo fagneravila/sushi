@@ -29,7 +29,7 @@
                         <div class="button button_small"><a href="<?= BASE_URL ?>/mesa/edit/<?= $i['idtbmesa'] ?>">Editar</a></div>
                         <div class="button button_small"><a href="<?= BASE_URL ?>/mesa/delete/<?= $i['idtbmesa'] ?>" onclick="return confirm('Tem certeza que deseja excluir?')">Excluir</a></div>
                     <?php //} else { ?>
-                        <div class="button button_small"><a href="<?= BASE_URL ?>/messa/view/<?= $i['idtbmesa'] ?>">Visualizar</a></div>
+                        <div class="button button_small"><a href="<?= BASE_URL ?>/pedido/view/<?= $i['idtbmesa'] ?>">Visualizar</a></div>
                     <?php //} ?>
                 </td>
             </tr>

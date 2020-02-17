@@ -2,7 +2,8 @@
 <?php if (isset($error_msg) && !empty($error_msg)) { ?>
     <div class="warn">   <?= $error_msg; ?> </div>   
 <?php } ?>
-
+<div class="button"><a href="<?= BASE_URL ?>/mesa "> Voltar </a></div>
+     <br><br>
     <form method="POST" action="">
     <label for="nome">Descricao: </label><br>
     <input type="text" name="descricao" required/><br><br>

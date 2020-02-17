@@ -32,7 +32,7 @@ class Users extends model {
         if (isset($_SESSION["ccUser"]) && !empty($_SESSION["ccUser"])) {
             $idtbusuario = $_SESSION["ccUser"];
 
-            $sql = $this->db->prepare("SELECT tbpessoa.nome, tbfuncao.idtbfuncao FROM tbusuario INNER JOIN tbpessoa ON tbusuario.idtbpessoa = tbpessoa.idtbpessoa INNER JOIN tbfuncao on tbfuncao.idtbpessoa = tbpessoa.idtbpessoa WHERE tbusuario.idtbusuario = :idtbusuario");
+            $sql = $this->db->prepare("SELECT tbpessoa.nome, tbfuncao.idtbfuncao, tbusuario.idtbusuario FROM tbusuario INNER JOIN tbpessoa ON tbusuario.idtbpessoa = tbpessoa.idtbpessoa INNER JOIN tbfuncao on tbfuncao.idtbpessoa = tbpessoa.idtbpessoa WHERE tbusuario.idtbusuario = :idtbusuario");
             $sql->bindValue(":idtbusuario", $idtbusuario);
             $sql->execute();
 
@@ -49,8 +49,16 @@ class Users extends model {
             return $this->userInfo['idtbfuncao'];
         } else {
             return 0;
+    }}
+    
+       public function getIdusuario() {
+        if (isset($this->userInfo['idtbusuario'])) {
+            return $this->userInfo['idtbusuario'];
+        } else {
+            return 0;
         }
     }
+        
 
     public function getNome() {
         if (isset($this->userInfo['nome'])) {

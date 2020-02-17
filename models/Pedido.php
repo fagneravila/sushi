@@ -10,7 +10,7 @@ Class pedido extends model{
     
     
     private $pedidoInfo;
-   /* public function __construct($idtbmesa){
+    public function __construct($idtbmesa){
         parent::__construct();
       //  $data = array();
         $sql = $this->db->prepare("SELECT tbmesa.idtbmesa,tbmesa.descricao as descmesa, tbpedido.idtbpedido, tbproduto.descricao, (tbproduto.valor * tbpedido.quantidade) AS VALOR , tbstatus.descricao AS STATUSDESCRICAO, tbstatus.idtbstatus 
@@ -25,7 +25,7 @@ AND tbpedido.data = CURRENT_DATE");
             $this->pedidoInfo  = $sql->fetch();
         }
         return  $this->pedidoInfo;
-    }*/
+    }
     
      public function getInfo($idtbmesa) {
        
@@ -43,9 +43,34 @@ AND tbpedido.data = CURRENT_DATE");
           return $this->pedidoInfo;
      }
     
+     
+     
+      public function getTotal($idtbmesa) {
+       
+        $sql = $this->db->prepare("SELECT sum(tbproduto.valor * tbpedido.quantidade) AS VALORTOTAL FROM tbpedido INNER JOIN tbproduto ON tbproduto.idtbproduto = tbpedido.idtbproduto INNER JOIN tbstatus on tbpedido.idtbstatus = tbstatus.idtbstatus WHERE tbpedido.idtbmesa = :idtbmesa AND tbstatus.idtbstatus NOT IN(3,4) AND tbpedido.data = CURRENT_DATE");
+        $sql->bindValue(":idtbmesa", $idtbmesa);
+         $sql->execute();
+        if($sql->rowCount() > 0){
+        $this->pedidoInfo  = $sql->fetch();
+         }
+          return $this->pedidoInfo;
+    }
+     
+     public function getTipoPagamento() {
+       $data = array();
+        $sql = $this->db->prepare("SELECT * FROM tbtipopagamento");
+      //  $sql->bindValue(":idtbmesa", $idtbmesa);
+         $sql->execute();
+        if($sql->rowCount() > 0){
+        $data  = $sql->fetchAll();
+         }
+          return $data;
+    }
+     
+     
      public function getList($offset,$idtbmesa) {
         $data = array();
-        $sql = $this->db->prepare("SELECT tbpedido.idtbpedido, tbproduto.descricao, tbpedido.quantidade,(tbproduto.valor * tbpedido.quantidade) AS VALOR , tbstatus.descricao AS STATUSDESCRICAO, tbstatus.idtbstatus 
+        $sql = $this->db->prepare("SELECT tbpedido.idtbpedido, tbproduto.descricao, tbpedido.quantidade, tbproduto.valor AS VALORUNITARIO,(tbproduto.valor * tbpedido.quantidade) AS VALOR , tbstatus.descricao AS STATUSDESCRICAO, tbstatus.idtbstatus 
          FROM tbpedido INNER JOIN tbproduto ON tbproduto.idtbproduto = tbpedido.idtbproduto 
         INNER JOIN tbstatus on tbpedido.idtbstatus = tbstatus.idtbstatus
         WHERE tbpedido.idtbmesa = :idtbmesa AND tbstatus.idtbstatus NOT IN(3,4)
@@ -57,7 +82,6 @@ AND tbpedido.data = CURRENT_DATE LIMIT $offset, 10");
         }
         return $data;
     }
-     
      public function getCount($idtbmesa) {
         $data = array();
         $sql = $this->db->prepare("SELECT COUNT(*) c FROM tbpedido WHERE idtbmesa = :idtbmesa AND data = CURRENT_DATE");
@@ -65,24 +89,36 @@ AND tbpedido.data = CURRENT_DATE LIMIT $offset, 10");
         $sql->execute();
         $data = $sql->fetch();
         $r = $data['c'];
-        return $r;
-}
-     public function add($descricao,$valor) {
-        $sql = $this->db->prepare("SELECT COUNT(*) AS c FROM tbpedido WHERE  descricao = :descricao");
-        $sql->bindValue(':descricao',$descricao);
-        $sql->bindValue(':valor', $valor);
+     return $r;
+     
+     }
+     
+      public function caixa() {
+        $data = array();
+        $sql = $this->db->prepare("SELECT tbcaixa.valor as valor, tbcaixa.data as data, tbtipopagamento.descricao FROM tbcaixa INNER JOIN tbtipopagamento ON tbcaixa.idtbtipopagamento = tbtipopagamento.idtbtipopagamento");
+       // $sql->bindValue(":idtbmesa", $idtbmesa);
         $sql->execute();
-        $row = $sql->fetch();
-        if ($row['c'] == 0) {
-            $sql = $this->db->prepare("INSERT INTO tbpedido SET descricao = :descricao, valor =:valor");
-            $sql->bindValue(':descricao', $descricao);
-            $sql->bindValue(':valor', $valor);
+        $data = $sql->fetch();
+        //$r = $data['c'];
+     return $data;
+     
+     }
+     public function add($idtbprodudo,$idtbmesa,$quantidade,$idusuario) {
+           // $data =  getdate();
+            $idtbstatus = 6;
+            $sql = $this->db->prepare("INSERT INTO tbpedido SET  "
+                    . "idtbproduto = :idtbproduto, idtbmesa =:idtbmesa , quantidade = :quantidade, "
+                    . "idtbusuario= :idtbusuario,"
+                    . "data = CURRENT_DATE,"
+                    . " idtbstatus = :idtbstatus");
+            $sql->bindValue(':idtbproduto', $idtbprodudo);
+            $sql->bindValue(':idtbmesa', $idtbmesa);
+            $sql->bindValue(':quantidade', $quantidade);
+            $sql->bindValue(':idtbusuario', $idusuario);
+          //  $sql->bindValue(':data', $data);
+            $sql->bindValue(':idtbstatus', $idtbstatus);
             $sql->execute();
-            return '1';
-        } else {
-            return '0';
-        }
-    }
+       }
        public function edit($idtbpedido, $descricao, $valor) {
         $sql = $this->db->prepare("UPDATE tbpedido SET descricao = :descricao, valor = :valor WHERE idtbpedido = :idtbpedido");
         $sql->bindValue(':idtbpedido', $idtbpedido);
@@ -110,6 +146,20 @@ AND tbpedido.data = CURRENT_DATE LIMIT $offset, 10");
         }
         return $array;
     }
-    
+     public function addpagamento($idtbtipopagamento,$idtbmesa,$valor) {
+           $sql = $this->db->prepare("INSERT INTO tbtipopagamento SET  "
+                    . "idtbtipopagamento = :idtbtipopagamento, valor = :valor, data = CURRENT_DATE");
+            $sql->bindValue(':idtbtipopagamento', $idtbtipopagamento);
+            $sql->bindValue(':idtbmesa', $idtbmesa);
+            $sql->bindValue(':valor', $valor);
+            $sql->execute();
+            
+            $sql = $this->db->prepare("UPDATE tbpedido SET  "
+                    . "idtbstatus = 3 where data = CURRENT_DATE and idtbmesa = :idtbmesa");
+            $sql->bindValue(':idtbmesa', $idtbmesa);
+            $sql->execute();
+            
+            
+       }
 }
 ?>

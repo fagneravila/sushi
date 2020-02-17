@@ -6,10 +6,12 @@
 
 <h1>Pedido</h1>
 
-<?php //if ($edit_pedido) { ?>
-    <div class="button"><a href="<?= BASE_URL ?>/pedido/add"> Adicionar Pedido - <?= $mesainfo["descmesa"]?> </a></div>
-<?php //} ?>
+
+    <div class="button"><a href="<?= BASE_URL ?>/pedido/preadd/ <?= $mesainfo["idtbmesa"]?> "> Adicionar Pedido - <?= $mesainfo["descricao"]?> </a></div>
+      
+     <div class="button"><a href="<?= BASE_URL ?>/mesa "> Voltar </a></div>
     <input type="text" id="busca" data-type="search_pedido"/>
+    
 <table border="0" width="100%">
     <thead>
         <tr>
@@ -35,7 +37,8 @@
                         <div class="button button_small"><a href="<?= BASE_URL ?>/pedido/edit/<?= $i['idtbpedido'] ?>">Editar</a></div>
                         <div class="button button_small"><a href="<?= BASE_URL ?>/pedido/delete/<?= $i['idtbpedido'] ?>" onclick="return confirm('Tem certeza que deseja excluir?')">Excluir</a></div>
                     <?php //} else { ?>
-                        <div class="button button_small"><a href="<?= BASE_URL ?>/pedido/view/<?= $i['idtbpedido'] ?>">Visualizar</a></div>
+                       <!-- <div class="button button_small"><a href="<?= BASE_URL ?>/pedido/view/<?= $i['idtbpedido'] ?>">Visualizar</a></div>-->
+                        <div class="button button_small"><a href="<?= BASE_URL ?>/pedido/preadd/ <?= $mesainfo["idtbmesa"]?> ">Visualizar</a></div>
                     <?php //} ?>
                 </td>
             </tr>
@@ -48,3 +51,4 @@
     <?php } ?>
         <div style="clear:both"></div>
 </div>
+<div class="button"><a href="<?= BASE_URL ?>/pedido/fecharConta/ <?= $mesainfo["idtbmesa"]?> "> Fechar Conta - <?= $mesainfo["descricao"]?> </a></div>

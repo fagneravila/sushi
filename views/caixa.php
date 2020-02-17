@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */ ?>
 
-<h1>Produto</h1>
+<h1>Caixa</h1>
 
 <?php //if ($edit_produto) { ?>
     <div class="button"><a href="<?= BASE_URL ?>/produto/add"> Adicionar Produto</a></div>
@@ -14,23 +14,18 @@
     <thead>
         <tr>
             <th>Nome</th>
-            <th>Preço</th>
-            <th>Ações</th>
+            <th>Valor</th>
+            <th>Data</th>
         </tr>
     </thead>
 <tbody>
-        <?php foreach ($produto_list as $i) { ?>
+        <?php foreach ($caixa_list as $i) { ?>
             <tr>
              
                 <td width="150"><?= $i['descricao'] ?></td>
                 <td width="150">R$ <?= number_format($i['valor'],2) ?></td>
                 <td width="160px">
-                    <?php //if ($edit_inventory) { ?>
-                        <div class="button button_small"><a href="<?= BASE_URL ?>/produto/edit/<?= $i['idtbproduto'] ?>">Editar</a></div>
-                        <div class="button button_small"><a href="<?= BASE_URL ?>/produto/delete/<?= $i['idtbproduto'] ?>" onclick="return confirm('Tem certeza que deseja excluir?')">Excluir</a></div>
-                    <?php //} else { ?>
-                    <!--    <div class="button button_small"><a href="<?= BASE_URL ?>/produto/view/<?= $i['idtbproduto'] ?>">Visualizar</a></div>-->
-                    <?php //} ?>
+                  <?= $i['data'] ?>
                 </td>
             </tr>
         <?php } ?>
@@ -42,3 +37,4 @@
     <?php } ?>
         <div style="clear:both"></div>
 </div>
+

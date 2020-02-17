@@ -1,9 +1,10 @@
 <h1>Mesa - Editar</h1>
+
 <?php if (isset($error_msg) && !empty($error_msg)) { ?>
     <div class="warn">   <?= $error_msg; ?> </div>   
 <?php } ?>
-    
-  
+     <div class="button"><a href="<?= BASE_URL ?>/mesa "> Voltar </a></div>
+     <br><br>
 <form method="Post">
     <label for="text"> Descricao</label><br>
    

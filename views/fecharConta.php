@@ -5,7 +5,11 @@
  */ ?>
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 <h1>Valor Total : R$ <?=$conta['VALORTOTAL']?></h1>
+=======
+<h1>Deta</h1>
+>>>>>>> 76631a4222b825cc15110aaa46cb918d4093a5e3
 =======
 <h1>Deta</h1>
 >>>>>>> 76631a4222b825cc15110aaa46cb918d4093a5e3
@@ -44,9 +48,15 @@
 </div>
     
 <<<<<<< HEAD
+<<<<<<< HEAD
     <form method="POST">
     <input type="hidden" name="valor" value=" <?= $i['VALOR']?>" /><br>
     <input type="hidden" name="idtbmesa" value=" <?php echo $mesainfo['idtbmesa'];?>"/><br>
+=======
+    <form method="Post">
+    <input type="hidden" name="valor" value=" <?= $i['VALOR']?>" /><br>
+    <input type="hidden" name="idmesa" value=" <?php echo $mesainfo['idtbemesa'];?>"/><br>
+>>>>>>> 76631a4222b825cc15110aaa46cb918d4093a5e3
 =======
     <form method="Post">
     <input type="hidden" name="valor" value=" <?= $i['VALOR']?>" /><br>
@@ -60,7 +70,11 @@
     </select>
     <br><br>
 <<<<<<< HEAD
+<<<<<<< HEAD
     
+=======
+
+>>>>>>> 76631a4222b825cc15110aaa46cb918d4093a5e3
 =======
 
 >>>>>>> 76631a4222b825cc15110aaa46cb918d4093a5e3

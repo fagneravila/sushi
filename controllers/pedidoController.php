@@ -93,7 +93,11 @@ class pedidoController extends controller {
        
          if (isset($_POST['idtbtipopagamento']) && !empty($_POST['idtbtipopagamento'])) {
 <<<<<<< HEAD
+<<<<<<< HEAD
                 $idtbtipopagamento = addslashes($_POST['idtbtipopagamento']);
+=======
+                $idtbpagamento = addslashes($_POST['idtbtipopagamento']);
+>>>>>>> 76631a4222b825cc15110aaa46cb918d4093a5e3
 =======
                 $idtbpagamento = addslashes($_POST['idtbtipopagamento']);
 >>>>>>> 76631a4222b825cc15110aaa46cb918d4093a5e3
@@ -107,9 +111,14 @@ class pedidoController extends controller {
                       );
                   
 <<<<<<< HEAD
+<<<<<<< HEAD
                   
               
                 header("Location:" . BASE_URL . "/mesa");
+=======
+              
+                header("Location:" . BASE_URL . "/caixa");
+>>>>>>> 76631a4222b825cc15110aaa46cb918d4093a5e3
 =======
               
                 header("Location:" . BASE_URL . "/caixa");
@@ -170,6 +179,7 @@ class pedidoController extends controller {
             
     }
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
     
 >>>>>>> 76631a4222b825cc15110aaa46cb918d4093a5e3
@@ -194,6 +204,9 @@ class pedidoController extends controller {
             
             
     }
+=======
+    
+>>>>>>> 76631a4222b825cc15110aaa46cb918d4093a5e3
     
      public function escolherPedido($idtbproduto,$idtbmesa) {
         $data = array();
@@ -221,6 +234,9 @@ class pedidoController extends controller {
     
 <<<<<<< HEAD
     
+<<<<<<< HEAD
+=======
+>>>>>>> 76631a4222b825cc15110aaa46cb918d4093a5e3
 =======
 >>>>>>> 76631a4222b825cc15110aaa46cb918d4093a5e3
     public function add($idproduto,$idmesa) {

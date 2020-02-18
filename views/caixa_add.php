@@ -11,8 +11,8 @@
   
     
     <form method="POST">
-        <label for="group">Valor </label><br>
-        <input type="number" name="valor" value=" " /><br>
+        <label for="text">Valor </label><br>
+        <input type="number"  step="0.01"  name="valor"  /><br>
       <label for="group"> Forma de Pagamenro</label><br>
     <select name="idtbtipopagamento"  id="group" required="">
         <?php foreach ($pag as $g) { ?>

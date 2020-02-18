@@ -92,15 +92,8 @@ class pedidoController extends controller {
             $mesa = new Mesa();
        
          if (isset($_POST['idtbtipopagamento']) && !empty($_POST['idtbtipopagamento'])) {
-<<<<<<< HEAD
-<<<<<<< HEAD
                 $idtbtipopagamento = addslashes($_POST['idtbtipopagamento']);
-=======
-                $idtbpagamento = addslashes($_POST['idtbtipopagamento']);
->>>>>>> 76631a4222b825cc15110aaa46cb918d4093a5e3
-=======
-                $idtbpagamento = addslashes($_POST['idtbtipopagamento']);
->>>>>>> 76631a4222b825cc15110aaa46cb918d4093a5e3
+               
                 $idtbmesa = addslashes($_POST['idtbmesa']);
                 $valor = addslashes($_POST['valor']);
                // $idtbusuario = $data['idtbusuario'];
@@ -109,20 +102,9 @@ class pedidoController extends controller {
                         $idtbmesa,
                         $valor
                       );
-                  
-<<<<<<< HEAD
-<<<<<<< HEAD
-                  
-              
-                header("Location:" . BASE_URL . "/mesa");
-=======
-              
+                   
                 header("Location:" . BASE_URL . "/caixa");
->>>>>>> 76631a4222b825cc15110aaa46cb918d4093a5e3
-=======
-              
-                header("Location:" . BASE_URL . "/caixa");
->>>>>>> 76631a4222b825cc15110aaa46cb918d4093a5e3
+
             }
         
                 
@@ -178,11 +160,7 @@ class pedidoController extends controller {
             
             
     }
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-    
->>>>>>> 76631a4222b825cc15110aaa46cb918d4093a5e3
+
     
      public function escolherPedido($idtbproduto,$idtbmesa) {
         $data = array();
@@ -204,41 +182,13 @@ class pedidoController extends controller {
             
             
     }
-=======
-    
->>>>>>> 76631a4222b825cc15110aaa46cb918d4093a5e3
-    
-     public function escolherPedido($idtbproduto,$idtbmesa) {
-        $data = array();
-        $u = new Users();
-        $u->setLoggedUser();
-        $funcao = new Funcao($u->getFuncao());
-        $data['usuarioFuncao'] = $funcao->getDescricao();
-        $data['usuarioNome'] = $u->getNome();
 
-           // $ped = new Pedido($idtbmesa);
-            $prod = new Produto();
-            $mesa = new Mesa();
-            $data['mesainfo'] = $mesa->getInfo($idtbmesa) ;
-            $data['produto_info'] = $prod->getInfo($idtbproduto);
-          //  $pedido_info = $idtbpedido;
-           // $data['edit_edit'] ;//= $u->hasPermissions('inventory_edit');
-            $this->loadTemplate('pedido_add', $data);     
-            
-            
-            
-    }
+    
+     
     
     
     
-    
-<<<<<<< HEAD
-    
-<<<<<<< HEAD
-=======
->>>>>>> 76631a4222b825cc15110aaa46cb918d4093a5e3
-=======
->>>>>>> 76631a4222b825cc15110aaa46cb918d4093a5e3
+
     public function add($idproduto,$idmesa) {
         $data = array();
         $u = new Users();

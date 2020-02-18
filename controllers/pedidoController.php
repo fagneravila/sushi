@@ -92,7 +92,7 @@ class pedidoController extends controller {
             $mesa = new Mesa();
        
          if (isset($_POST['idtbtipopagamento']) && !empty($_POST['idtbtipopagamento'])) {
-                $idtbpagamento = addslashes($_POST['idtbtipopagamento']);
+                $idtbtipopagamento = addslashes($_POST['idtbtipopagamento']);
                 $idtbmesa = addslashes($_POST['idtbmesa']);
                 $valor = addslashes($_POST['valor']);
                // $idtbusuario = $data['idtbusuario'];
@@ -102,8 +102,9 @@ class pedidoController extends controller {
                         $valor
                       );
                   
+                  
               
-                header("Location:" . BASE_URL . "/caixa");
+                header("Location:" . BASE_URL . "/mesa");
             }
         
                 
@@ -223,7 +224,7 @@ class pedidoController extends controller {
     }
     
     
-     public function edit($idtbpedido) {
+     public function edit($idtbpedido,$idtbmesa) {
         $data = array();
         $u = new Users();
         $u->setLoggedUser();
@@ -231,18 +232,21 @@ class pedidoController extends controller {
         $data['usuarioFuncao'] = $funcao->getDescricao();
         $data['usuarioNome'] = $u->getNome();
       //  if ($u->hasPermissions('clients_edit')) {
-            $p = new Pedido();
+            $p = new Pedido($idtbmesa);
+                      
+            
 
-           if (isset($_POST['descricao']) && !empty($_POST['descricao'])) {
-                $descricao = addslashes($_POST['descricao']);
-                $valor = addslashes($_POST['valor']);
-               
+           if (isset($_POST['idtbpedido']) && !empty($_POST['idtbpedido'])) {
+                $idtbstatus = addslashes($_POST['idtbstatus']);
+                $idpedido = addslashes($_POST['idtbpedido']);
+                $idmesa = addslashes($_POST['idtbmesa']);
+                
              
-                $p->edit($idtbpedido, $descricao,$valor);
-                header("Location:" . BASE_URL . "/pedido");
+                $p->editStatus($idtbpedido, $idtbstatus);
+                header("Location:" . BASE_URL ."/pedido/view/".$idmesa);
             }
-
-           $data['pedido_info'] = $p->getInfo($idtbpedido);
+           $data['status'] = $p->getStatus();
+           $data['pedido_info'] = $p->getInfoIdtbpedido($idtbpedido);
            
             $this->loadTemplate('pedido_edit', $data);
         //} else {

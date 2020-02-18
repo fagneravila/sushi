@@ -24,10 +24,11 @@
             <div class="menu_area"> 
                 <ul>          
                     <li><a href="<?= BASE_URL ?>"><i class="fa fa-university" aria-hidden="true"></i> Home</a></li>
-                    <li><a href="<?= BASE_URL ?>/permissions"><i class="fa fa-lock" aria-hidden="true"></i> Permissões</li>
+                    <li><a href="<?= BASE_URL ?>/caixa"><i class="fa fa-lock" aria-hidden="true"></i> Conta</li>
                     <li><a href="<?= BASE_URL ?>/users"><i class="fa fa-user" aria-hidden="true"></i> Usuários</li>
-                    <li><a href="<?= BASE_URL ?>/mesa"><i class="fa fa-users" aria-hidden="true"></i>Mesa / Comanda</li>            
+                    <li><a href="<?= BASE_URL ?>/mesa"><i class="fa fa-users" aria-hidden="true"></i> Mesa / Comanda</li>            
                     <li><a href="<?= BASE_URL ?>/produto"><i class="fa fa-archive" aria-hidden="true"></i> Produtos</li>
+                     <li><a href="<?= BASE_URL ?>/cozinha"><i class="fa fa-archive" aria-hidden="true"></i> Cozinha</li>
                 </ul>
             </div>   
         </div>

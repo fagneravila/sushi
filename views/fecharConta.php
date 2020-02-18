@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */ ?>
 
-<h1>Deta</h1>
+<h1>Valor Total : R$ <?=$conta['VALORTOTAL']?></h1>
 
 
   
@@ -39,9 +39,9 @@
     
 </div>
     
-    <form method="Post">
+    <form method="POST">
     <input type="hidden" name="valor" value=" <?= $i['VALOR']?>" /><br>
-    <input type="hidden" name="idmesa" value=" <?php echo $mesainfo['idtbemesa'];?>"/><br>
+    <input type="hidden" name="idtbmesa" value=" <?php echo $mesainfo['idtbmesa'];?>"/><br>
      <label for="group"> Forma de Pagamenro</label><br>
     <select name="idtbtipopagamento"  id="group" required="">
         <?php foreach ($pag as $g) { ?>
@@ -49,6 +49,6 @@
         <?php } ?>
     </select>
     <br><br>
-
+    
     <input type="submit" value="Pagar"/>
 </form>

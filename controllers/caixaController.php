@@ -11,7 +11,7 @@
  *
  * @author fagne
  */
-class mesaController extends controller {
+class caixaController extends controller {
     //put your code here
     
      public function __construct() {
@@ -32,7 +32,7 @@ class mesaController extends controller {
         $data['usuarioNome'] = $u->getNome();
 
        
-            $mesa = new Mesa();
+            $caixa = new Caixa();
             $offset = 0;
             $data["p"]=1;
              if (isset($_GET['p']) && !empty($_GET['p'])){
@@ -43,40 +43,43 @@ class mesaController extends controller {
              }
              $offset = (10 *($data["p"]-1));
              
-            $data['mesa_list'] = $mesa->getList($offset);
-            $data['mesa_count'] = $mesa->getCount();
-            $data['m_count']= ceil($data['mesa_count']/5);
+            $data['caixa_list'] = $caixa->getList($offset);
+            $data['caixa_count'] = $caixa->getCount();
+            $data['c_count']= ceil($data['caixa_count']/5);
            // $data['edit_edit'] ;//= $u->hasPermissions('inventory_edit');
-            $this->loadTemplate('mesa', $data);
+            $this->loadTemplate('caixa', $data);
        
     }
     
     
     public function add() {
-        $data = array();
+       $data = array();
         $u = new Users();
         $u->setLoggedUser();
         $funcao = new Funcao($u->getFuncao());
         $data['usuarioFuncao'] = $funcao->getDescricao();
         $data['usuarioNome'] = $u->getNome();
-      //  if ($u->hasPermissions('clients_edit')) {
-            $m = new Mesa();
-
-            if (isset($_POST['descricao']) && !empty($_POST['descricao'])) {
-                $descricao = addslashes($_POST['descricao']);
-                $idtbsituacaomesa = addslashes($_POST['idtbsituacaomesa']);
-                $m->add($descricao, $idtbsituacaomesa);
+          $caixa = new Caixa();
+           
+       
+         if (isset($_POST['idtbtipopagamento']) && !empty($_POST['idtbtipopagamento'])) {
+                $idtbtipopagamento = addslashes($_POST['idtbtipopagamento']);
+                $idtbmesa = addslashes($_POST['idtbmesa']);
+                $valor = addslashes($_POST['valor']);
+               // $idtbusuario = $data['idtbusuario'];
+                  $caixa->addpagamento(
+                        $idtbtipopagamento, 
+                        $idtbmesa,
+                        $valor
+                      );
+                  
+                  
               
-                header("Location:" . BASE_URL . "/mesa");
-            }
-             $data['mesa_list'] = $m->getListSituacao();
-             $this->loadTemplate('mesa_add', $data);
-     //   } else {
-            
-       //     header("Location:" . BASE_URL . "/clients");
-       // }
+                header("Location:" . BASE_URL . "/caixa");
     }
-    
+            $data['pag'] = $caixa->getTipoPagamento();
+            $this->loadTemplate('caixa_add', $data);
+    }
     
      public function edit($idtbmesa) {
         $data = array();

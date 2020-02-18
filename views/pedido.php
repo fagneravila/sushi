@@ -34,7 +34,7 @@
                  <td width="50"><?= $i['STATUSDESCRICAO'] ?></td>
                 <td width="160px">
                     <?php //if ($edit_inventory) { ?>
-                        <div class="button button_small"><a href="<?= BASE_URL ?>/pedido/edit/<?= $i['idtbpedido'] ?>">Editar</a></div>
+                        <div class="button button_small"><a href="<?= BASE_URL ?>/pedido/edit/<?= $i['idtbpedido'] ?>/<?= $mesainfo["idtbmesa"]?>">Editar</a></div>
                         <div class="button button_small"><a href="<?= BASE_URL ?>/pedido/delete/<?= $i['idtbpedido'] ?>" onclick="return confirm('Tem certeza que deseja excluir?')">Excluir</a></div>
                     <?php //} else { ?>
                        <!-- <div class="button button_small"><a href="<?= BASE_URL ?>/pedido/view/<?= $i['idtbpedido'] ?>">Visualizar</a></div>-->

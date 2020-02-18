@@ -4,7 +4,11 @@
  * and open the template in the editor.
  */ ?>
 
+<<<<<<< HEAD
 <h1>Valor Total : R$ <?=$conta['VALORTOTAL']?></h1>
+=======
+<h1>Deta</h1>
+>>>>>>> 76631a4222b825cc15110aaa46cb918d4093a5e3
 
 
   
@@ -39,9 +43,15 @@
     
 </div>
     
+<<<<<<< HEAD
     <form method="POST">
     <input type="hidden" name="valor" value=" <?= $i['VALOR']?>" /><br>
     <input type="hidden" name="idtbmesa" value=" <?php echo $mesainfo['idtbmesa'];?>"/><br>
+=======
+    <form method="Post">
+    <input type="hidden" name="valor" value=" <?= $i['VALOR']?>" /><br>
+    <input type="hidden" name="idmesa" value=" <?php echo $mesainfo['idtbemesa'];?>"/><br>
+>>>>>>> 76631a4222b825cc15110aaa46cb918d4093a5e3
      <label for="group"> Forma de Pagamenro</label><br>
     <select name="idtbtipopagamento"  id="group" required="">
         <?php foreach ($pag as $g) { ?>
@@ -49,6 +59,10 @@
         <?php } ?>
     </select>
     <br><br>
+<<<<<<< HEAD
     
+=======
+
+>>>>>>> 76631a4222b825cc15110aaa46cb918d4093a5e3
     <input type="submit" value="Pagar"/>
 </form>

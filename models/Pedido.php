@@ -26,6 +26,7 @@ AND tbpedido.data = CURRENT_DATE");
         }
         return  $this->pedidoInfo;
     }
+<<<<<<< HEAD
     
     public function getStatus() {
          $data =array();
@@ -38,6 +39,8 @@ AND tbpedido.data = CURRENT_DATE");
           return $data;
      }
    
+=======
+>>>>>>> 76631a4222b825cc15110aaa46cb918d4093a5e3
     
      public function getInfo($idtbmesa) {
        
@@ -183,18 +186,32 @@ AND tbpedido.data = CURRENT_DATE LIMIT $offset, 10");
         return $array;
     }
      public function addpagamento($idtbtipopagamento,$idtbmesa,$valor) {
+<<<<<<< HEAD
            $sql = $this->db->prepare("INSERT INTO tbcaixa SET idtbtipopagamento = :idtbtipopagamento, valor = :valor, data = CURRENT_DATE");
             $sql->bindValue(':idtbtipopagamento', $idtbtipopagamento);
          //   $sql->bindValue(':idtbmesa', $idtbmesa);
+=======
+           $sql = $this->db->prepare("INSERT INTO tbtipopagamento SET  "
+                    . "idtbtipopagamento = :idtbtipopagamento, valor = :valor, data = CURRENT_DATE");
+            $sql->bindValue(':idtbtipopagamento', $idtbtipopagamento);
+            $sql->bindValue(':idtbmesa', $idtbmesa);
+>>>>>>> 76631a4222b825cc15110aaa46cb918d4093a5e3
             $sql->bindValue(':valor', $valor);
             $sql->execute();
             
             $sql = $this->db->prepare("UPDATE tbpedido SET  "
                     . "idtbstatus = 3 where data = CURRENT_DATE and idtbmesa = :idtbmesa");
             $sql->bindValue(':idtbmesa', $idtbmesa);
+<<<<<<< HEAD
             $sql->execute();       
             
        }
        
+=======
+            $sql->execute();
+            
+            
+       }
+>>>>>>> 76631a4222b825cc15110aaa46cb918d4093a5e3
 }
 ?>

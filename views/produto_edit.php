@@ -3,7 +3,7 @@
     <div class="warn">   <?= $error_msg; ?> </div>   
 <?php } ?>
     
-  
+  <div class="button"><a href="<?= BASE_URL ?>/produto"> Voltar</a>
 <form method="Post">
     <label for="text"> Descricao</label><br>
     <input type="text" name="descricao" value="<?php echo $produto_info['descricao'];?>"/><br><br>
